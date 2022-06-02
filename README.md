@@ -7,16 +7,16 @@ A Browser Extension for Bionic Reading on ANY website!
 
 
 # How it works
-Below is a screenshot demonstrating how the extension works by bolding out the initial parts of all text on any page when clicked. There are toggles and sliders to customize it to your preference so you can enjoy your time reading. You must agree this is awesome right?
+Below is a screenshot demonstrating how the extension works by bolding out the initial parts of all text (the first syllable or first character if only one syllable) on any page when clicked. There are toggles and sliders to customize it to your preference so you can enjoy your time reading. You must agree this is awesome right?
 ![Screenshot from 2022-05-29 19-13-02](https://user-images.githubusercontent.com/20851930/170895288-992e802f-4f64-4134-97cc-5144685ecb9e.png)
 
 
-The best way to install this extension is to follow the instructions below. However, we will also periodically be releasing this extension on the various stores under the name  [Jiffy Reader](https://jiffyreader.com). 
+The best way to install this extension is to follow the instructions below. However, we will also periodically be releasing this extension on the various stores under the name  [Jiffy Reader](https://jiffyreader.com).
 
 
 
 # Table of Contents
-- [bionic-reading](#bionic-reading)
+- [Jiffy Reader](#jiffy-reader)
 - [How it works](#how-it-works)
 - [Table of Contents](#table-of-contents)
 - [Installation Instructions](#installation-instructions)
@@ -26,12 +26,12 @@ The best way to install this extension is to follow the instructions below. Howe
   - [Edge](#edge)
 - [What is Bionic Reading?](#what-is-bionic-reading)
 - [Reporting Issues, bugs and feature request](#reporting-issues-bugs-and-feature-request)
-- [How to Contribution](#how-to-contribution)
+- [How to Contribute](#how-to-contribute)
   - [Development](#development)
   - [Configure vscode to run the project when it is opened](#configure-vscode-to-run-the-project-when-it-is-opened)
   - [Release a new version](#release-a-new-version)
 
-# Installation Instructions 
+# Installation Instructions
 
 
 ## Chrome
@@ -41,7 +41,7 @@ The best way to install this extension is to follow the instructions below. Howe
   1. Click [here](https://github.com/ansh/bionic-reading/releases/latest/download/chrome.zip) to download the latest `chrome.zip` release
   2. Extract the file
   3. Open Chrome
-  4. Enter `chrome://extensions`  in the address bar 
+  4. Enter `chrome://extensions`  in the address bar
   5. Enable `developer mode` with the toggle on the top right side of the page if it is not enabled already
   6. Click `load unpacked` on the left side of the page
   7. Find and select the extracted folder, this extension should now be installed
@@ -55,7 +55,7 @@ The best way to install this extension is to follow the instructions below. Howe
 
   1. Download `firefox.xpi` by right clicking [here](https://github.com/ansh/bionic-reading/releases/latest/download/firefox.xpi) and choose `Save link as` to download the latest `firefox.xpi `release
   2. Open Firefox
-  3. Enter `about:debugging#/runtime/this-firefox`  in the address bar 
+  3. Enter `about:debugging#/runtime/this-firefox`  in the address bar
   4. Click `Load Temporary Add-on...` and navigate to the path of the downloaded `firefox.xpi` and select it to install it
 
 <strong>Firefox will remove the extension when the browser is closed. This will be solved once we provide a means to download the extension from the firefox store</strong>
@@ -67,7 +67,7 @@ The best way to install this extension is to follow the instructions below. Howe
   1. Download: Click [here](https://github.com/ansh/bionic-reading/releases/latest/download/opera.crx) to download the latest `opera.crx` release
   2. Extract the file
   3. Open Opera
-  4. Enter `opera://extensions`  in the address bar 
+  4. Enter `opera://extensions`  in the address bar
   5. Enable `developer mode` with the toggle on the top right side of the page if it is not enabled already
   6. Click `load unpacked` on the left side of the page
   7. Find and select the extracted folder, this extension should now be installed and listed on the screen
@@ -112,7 +112,7 @@ Read more about [Bionic Reading](https://bionic-reading.com/about/).
   2. Open `vs code command pallet`
   3. Type and select `Tasks: Manage Automatic Tasks in Folder`
   4. Click `Allow Automatic Tasks in Folder`.
-  5. Reload VS code. 
+  5. Reload VS code.
 
 
 

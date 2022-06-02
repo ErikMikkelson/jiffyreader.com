@@ -8,13 +8,17 @@ const DEFAULT_FIXATION_STRENGTH = 3;
 // which tag's content should be ignored from bolded
 const IGNORE_NODE_TAGS = ['STYLE', 'SCRIPT'];
 
+const syllableRegex = /[^aeiouy]*[aeiouy]+(?:[^aeiouy]*$|[^aeiouy](?=[^aeiouy]))?/gi;
+
 // making half of the letters in a word bold
 function highlightText(sentenceText) {
   return sentenceText
     .replace(/\p{L}+/gu, (word) => {
       const { length } = word;
+      const syllables = word.match(syllableRegex);
       let midPoint = 1;
-      if (length > 3) midPoint = Math.round(length / 2);
+      if (length > 3) midPoint = syllables[0].length;
+      if (midPoint === word.length) midPoint = 1;
       const firstHalf = word.slice(0, midPoint);
       const secondHalf = word.slice(midPoint);
       const htmlWord = `<br-bold class="br-bold">${makeFixations(firstHalf)}</br-bold>${secondHalf}`;
@@ -164,52 +168,52 @@ function addStyles() {
   const style = document.createElement('style');
   style.textContent = `
     .br-bold[fixation-strength="1"] :is(
-      [saccades-interval="0"] br-bold [fixation-strength="1"], 
+      [saccades-interval="0"] br-bold [fixation-strength="1"],
       [saccades-interval="1"] br-bold:nth-of-type(2n+1) [fixation-strength="1"],
       [saccades-interval="2"] br-bold:nth-of-type(3n+1) [fixation-strength="1"],
       [saccades-interval="3"] br-bold:nth-of-type(4n+1) [fixation-strength="1"],
       [saccades-interval="4"] br-bold:nth-of-type(5n+1) [fixation-strength="1"]
-      ) { 
-      font-weight: bold !important; display: inline; line-height: var(--br-line-height,initial); 
+      ) {
+      font-weight: bold !important; display: inline; line-height: var(--br-line-height,initial);
     }
 
     .br-bold[fixation-strength="2"] :is(
-      [saccades-interval="0"] br-bold [fixation-strength="1"], 
+      [saccades-interval="0"] br-bold [fixation-strength="1"],
       [saccades-interval="1"] br-bold:nth-of-type(2n+1) [fixation-strength="1"],
       [saccades-interval="2"] br-bold:nth-of-type(3n+1) [fixation-strength="1"],
       [saccades-interval="3"] br-bold:nth-of-type(4n+1) [fixation-strength="1"],
       [saccades-interval="4"] br-bold:nth-of-type(5n+1) [fixation-strength="1"],
 
-      [saccades-interval="0"] br-bold [fixation-strength="2"], 
+      [saccades-interval="0"] br-bold [fixation-strength="2"],
       [saccades-interval="1"] br-bold:nth-of-type(2n+1) [fixation-strength="2"],
       [saccades-interval="2"] br-bold:nth-of-type(3n+1) [fixation-strength="2"],
       [saccades-interval="3"] br-bold:nth-of-type(4n+1) [fixation-strength="2"],
       [saccades-interval="4"] br-bold:nth-of-type(5n+1) [fixation-strength="2"]
-      ) { 
-      font-weight: bold !important; display: inline; line-height: var(--br-line-height,initial); 
+      ) {
+      font-weight: bold !important; display: inline; line-height: var(--br-line-height,initial);
     }
 
     .br-bold[fixation-strength="3"] :is(
 
-      [saccades-interval="0"] br-bold [fixation-strength="1"], 
+      [saccades-interval="0"] br-bold [fixation-strength="1"],
       [saccades-interval="1"] br-bold:nth-of-type(2n+1) [fixation-strength="1"],
       [saccades-interval="2"] br-bold:nth-of-type(3n+1) [fixation-strength="1"],
       [saccades-interval="3"] br-bold:nth-of-type(4n+1) [fixation-strength="1"],
       [saccades-interval="4"] br-bold:nth-of-type(5n+1) [fixation-strength="1"],
-      
-      [saccades-interval="0"] br-bold [fixation-strength="2"], 
+
+      [saccades-interval="0"] br-bold [fixation-strength="2"],
       [saccades-interval="1"] br-bold:nth-of-type(2n+1) [fixation-strength="2"],
       [saccades-interval="2"] br-bold:nth-of-type(3n+1) [fixation-strength="2"],
       [saccades-interval="3"] br-bold:nth-of-type(4n+1) [fixation-strength="2"],
       [saccades-interval="4"] br-bold:nth-of-type(5n+1) [fixation-strength="2"]
       ,
-      [saccades-interval="0"] br-bold [fixation-strength="3"], 
+      [saccades-interval="0"] br-bold [fixation-strength="3"],
       [saccades-interval="1"] br-bold:nth-of-type(2n+1) [fixation-strength="3"],
       [saccades-interval="2"] br-bold:nth-of-type(3n+1) [fixation-strength="3"],
       [saccades-interval="3"] br-bold:nth-of-type(4n+1) [fixation-strength="3"],
       [saccades-interval="4"] br-bold:nth-of-type(5n+1) [fixation-strength="3"]
-      ) { 
-      font-weight: bold !important; display: inline; line-height: var(--br-line-height,initial); 
+      ) {
+      font-weight: bold !important; display: inline; line-height: var(--br-line-height,initial);
     }
     `;
   document.head.appendChild(style);
